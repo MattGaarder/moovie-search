@@ -24,14 +24,6 @@ function OMDBInfoRequest(movieObject) {
         method: "GET"
     }).then(function (OMDBObject) {
         displayInfo(OMDBObject)
-        // displayInfo(OMDBObject);//Am commenting this out and putting this in the get trailer function
-        // movieObject = {
-        //     Title: OMDBObject.Title,
-        //     Year: OMDBObject.Year,
-        //     Poster: OMDBObject.Poster,
-        // }; // see comment above: I am going to define this object in the get trailer function
-        // console.log(movieObject);
-        // I am going to use OMDBObject as an argument rather than movieObject
     })
 };
 
@@ -183,16 +175,25 @@ function applyActive() {
             clickedDiscover.append($("<div id='player'>"));
             onYouTubeIframeAPIReady(thingToSend);
         }, 10)
-
         console.log(clickedDiscover);
     }
-
 };
+
+
+function removeFromDiscover(event) {
+    var clickedElement = $(event.target);
+    console.log($(event.target).parent().parent())
+    console.log($(event.target).parent().parent().next())
+    clickedElement.parent().parent().next().addClass("active");
+    clickedElement.parent().parent().next().children().addClass("active");
+    console.log(clickedElement.parent().parent().next().children())
+    // clickedElement.parent().parent('div').remove();  
+}
 
 // I need to make it so that when active is applied the youtube player is removed from the active div
 // and then it is generated in the new active div. How to do this?
 // // removeBtn.parent('li').remove();
-
+moviesView.on('click', '.delete-item-btn', removeFromDiscover);
 moviesView.on('click', '.discover', applyActive);
 seenList.on('click', '.info-btn', infoFromListEl);
 watchList.on('click', '.info-btn', infoFromListEl);
