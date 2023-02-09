@@ -12,6 +12,7 @@ $("#find-movie").on("click", function (event) {
     $("#find-input").val("");
     event.preventDefault();
     OMDBInfoRequest(movieObject);
+
     // getTrailer()
 });
 
@@ -101,15 +102,12 @@ function displayInfo(OMDBCall) {
     watchButton.on('click', function () {
         moveToList(OMDBCall, 'watch');
     });
+    discoverActivePWidth();
 };
 
 
 
 function getTrailer(movieObject) {
-    // console.log(movieObject.Title);
-    console.log(movieObject);
-
-    console.log(movieObject);
     var queryParam = movieObject.Title;
     var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=" + queryParam + " trailer&key=" + youtubeApiKey;
     $.ajax({
@@ -119,7 +117,6 @@ function getTrailer(movieObject) {
 
         // console.log(youtubeObject);
         movieObject["videoId"] = youtubeObject.items[0].id.videoId;
-        console.log(movieObject);
         discoverDiv.attr("data-videoid", youtubeObject.items[0].id.videoId);
         // appendElements(movieObject);
         onYouTubeIframeAPIReady(movieObject)
@@ -380,7 +377,16 @@ seenListHeight();
 
 // Look up filter method.
 
-
+function discoverActivePWidth() {
+    var discoverAmount = $("#movies-view").children().length;
+    console.log($("#movies-view").children().length);
+    if(discoverAmount > 3) {
+        $(".discover.active p").css({"width": "28vw",
+        "padding-left": "0%"});
+    } else {
+        return;
+    }
+}
 
 
 
