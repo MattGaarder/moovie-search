@@ -382,7 +382,8 @@ function discoverActivePWidth() {
     console.log($("#movies-view").children().length);
     if(discoverAmount > 3) {
         $(".discover.active p").css({"width": "28vw",
-        "padding-left": "0%"});
+        "padding-left": "3%"});
+        $(".discover .poster.active").css({"width": "16vw"})
     } else {
         return;
     }
