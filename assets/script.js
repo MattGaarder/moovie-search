@@ -39,10 +39,13 @@ function OMDBInfoRequest(movieObject) {
 function displayInfo(OMDBCall) {
     playerDiv = $("<div id='player'>");
     buttonDiv = $("<div id='buttonDiv'>");
+    deleteDiv = $("<div id='deleteDiv'>")
     discoverDiv = $("<div class='discover'>");
     posterDiv = $("<div class='poster'>");
     seenButton = $("<i id='seen' class='fa-solid fa-eye'></i>")
     watchButton = $("<i id='watch' class='fa-solid fa-square-plus'></i>");
+    deleteBtn = $("<i class='fa-solid fa-circle-xmark'></i>");
+    deleteBtn.addClass("delete-item-btn")
     // infoButton = $("<i class='fa-solid fa-circle-info'></i>")
     seenButton.text(" Seen");
     watchButton.text(" Watch");
@@ -83,12 +86,15 @@ function displayInfo(OMDBCall) {
     detailsDiv.addClass("active");
     posterDiv.addClass("active");
     posterDiv.css("background-image", "url(" + imageURL + ")");
+    
     discoverDiv.append(posterDiv);
     discoverDiv.append(detailsDiv);
     discoverDiv.append(playerDiv);
     detailsDiv.append(buttonDiv);
     buttonDiv.append(watchButton);
     buttonDiv.append(seenButton);
+    deleteDiv.append(deleteBtn);
+    discoverDiv.append(deleteDiv);
     // buttonDiv.append(infoButton);
     movieObject = {
         Title: OMDBCall.Title,
@@ -141,6 +147,7 @@ function onYouTubeIframeAPIReady(arbitrary) {
             'playsinline': 1
         },
     });
+
 }
 
 // I want to make it so that clicking on any of the list elements gets their info back up in the discover div
