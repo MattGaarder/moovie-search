@@ -86,6 +86,7 @@ function displayInfo(OMDBCall) {
     detailsDiv.addClass("active");
     posterDiv.addClass("active");
     posterDiv.css("background-image", "url(" + imageURL + ")");
+    deleteDiv.append(deleteBtn);
     
     discoverDiv.append(posterDiv);
     discoverDiv.append(detailsDiv);
@@ -93,8 +94,7 @@ function displayInfo(OMDBCall) {
     detailsDiv.append(buttonDiv);
     buttonDiv.append(watchButton);
     buttonDiv.append(seenButton);
-    deleteDiv.append(deleteBtn);
-    discoverDiv.append(deleteDiv);
+    discoverDiv.prepend(deleteDiv);
     // buttonDiv.append(infoButton);
     movieObject = {
         Title: OMDBCall.Title,

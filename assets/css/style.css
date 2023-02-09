@@ -253,20 +253,34 @@ body {
 }
 
 .discover #deleteDiv i {
-  font-size: 130%;
+  font-size: 150%;
   box-shadow: none;
-  background-color: white;
-  border: 1px solid white;
-  border-radius: 180px;
+  /* background-color: white; */
+  border: none;
+  /* border-radius: 180px; */
   color: #111;
   padding: 0%;
+  width: 0;
+  position: absolute;
+}
+
+.discover #deleteDiv i:hover {
+  font-size: 150%;
+  box-shadow: none;
+  /* background-color: white; */
+  border: none;
+  /* border-radius: 180px; */
+  color: white;
+  padding: 0%;
+  width: 0;
+  position: absolute;
 }
 
 #deleteDiv {
-  position: absolute;
-  width: 4.2%;
-  top: 0%;
-  right: 0%;
+  position: relative;
+  width: 0%;
+  top: 0.9%;
+  left: 0%;
 
 }
 
